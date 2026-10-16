@@ -162,14 +162,17 @@ body {
 }
 
 /* ---------- Hero ---------- */
-.hero .hero-content .hero-tag .tag-dot {
-  background: var(--accent-secondary);
-}
-
 .hero .hero-content .hero-tag .tag-text {
   color: var(--accent-secondary);
   font-family: var(--label-font);
+  font-size: 1.125rem;
   letter-spacing: 0.12em;
+}
+
+@media (max-width: 576px) {
+  .hero .hero-content .hero-tag .tag-text {
+    font-size: 0.95rem;
+  }
 }
 
 .hero .hero-content .hero-headline {
@@ -777,10 +780,4 @@ body.is-busy .js-action {
 
 .site-footer a {
   font-weight: 600;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero .hero-content .hero-tag .tag-dot {
-    animation: none;
-  }
 }
