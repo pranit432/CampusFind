@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>CampusFind - Blockchain Lost &amp; Found</title>
+  <meta name="description" content="Campus lost and found on the Ethereum blockchain, with deposit-protected claims.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS (Orbit template) + CampusFind theme -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/campusfind-theme.css" rel="stylesheet">
+</head>
+
+<body class="index-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="#hero" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">CampusFind</h1><span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a id="headerConnect" class="btn-getstarted js-connect" href="#dashboard">
+        <i class="bi bi-wallet2"></i> <span>Connect MetaMask</span>
+      </a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero -->
+    <section id="hero" class="hero section">
+      <div class="container">
+        <div class="row align-items-center gy-5">
+
+          <div class="col-lg-6">
+            <div class="hero-content">
+              <div class="hero-tag">
+                <span class="tag-dot"></span>
+                <span class="tag-text">BLOCKCHAIN LOST &amp; FOUND</span>
+              </div>
+
+              <h1 class="hero-headline">Lost something on campus? Get it back, with a record nobody can quietly edit.</h1>
+
+              <p class="hero-text">Report found items, claim your own with a small refundable deposit, and watch every handover recorded on the Ethereum blockchain.</p>
+
+              <div class="hero-cta">
+                <a href="#dashboard" class="cta-button js-connect">
+                  Connect MetaMask <i class="bi bi-arrow-right"></i>
+                </a>
+                <a href="#how-it-works" class="cta-link">
+                  <i class="bi bi-play-circle"></i> See how it works
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-visual">
+              <div class="hero-visual-frame">
+                <svg viewBox="0 0 480 380" class="hero-art" role="img" aria-label="Three linked blocks labelled Reported, Claimed and Returned">
+                  <defs>
+                    <linearGradient id="artBg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#DDEFEB"></stop>
+                      <stop offset="1" stop-color="#F8E8E2"></stop>
+                    </linearGradient>
+                  </defs>
+                  <rect width="480" height="380" fill="url(#artBg)"></rect>
+
+                  <g class="art-link">
+                    <path d="M240 112 V150"></path>
+                    <path d="M240 214 V252"></path>
+                  </g>
+
+                  <g transform="translate(90 48)">
+                    <rect class="art-block" width="300" height="64" rx="14"></rect>
+                    <circle class="art-dot" cx="32" cy="32" r="9"></circle>
+                    <text class="art-label" x="58" y="29">Item reported</text>
+                    <text class="art-sub" x="58" y="47">Finder posts the find</text>
+                    <text class="art-hash" x="214" y="37">0x7f3a…c91e</text>
+                  </g>
+
+                  <g transform="translate(90 150)">
+                    <rect class="art-block" width="300" height="64" rx="14"></rect>
+                    <circle class="art-dot" cx="32" cy="32" r="9"></circle>
+                    <text class="art-label" x="58" y="29">Claim submitted</text>
+                    <text class="art-sub" x="58" y="47">Owner adds proof + deposit</text>
+                    <text class="art-hash" x="214" y="37">0x2b8d…04fa</text>
+                  </g>
+
+                  <g transform="translate(90 252)">
+                    <rect class="art-block is-final" width="300" height="64" rx="14"></rect>
+                    <circle class="art-dot warm" cx="32" cy="32" r="9"></circle>
+                    <text class="art-label" x="58" y="29">Returned</text>
+                    <text class="art-sub" x="58" y="47">Approved, deposit refunded</text>
+                    <text class="art-hash" x="214" y="37">0xe90c…7b25</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="hero-badge">
+                <div class="hero-badge-icon"><i class="bi bi-shield-check"></i></div>
+                <div>
+                  <div class="hero-badge-value">Deposit-protected claims</div>
+                  <div class="hero-badge-label">Refunded on every outcome</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="how-it-works section">
+      <div class="container">
+        <div class="row g-5 align-items-start">
+
+          <div class="col-lg-5">
+            <div class="section-title text-start">
+              <h2>How CampusFind Works</h2>
+              <p>From a found wallet to a confirmed handover, here is exactly what the smart contract does.</p>
+            </div>
+            <p class="how-it-works-note">
+              <i class="bi bi-shield-lock"></i>
+              The smart contract, not a server, decides who is allowed to do what.
+            </p>
+
+            <div class="state-flow" aria-label="Item lifecycle">
+              <span class="status-badge s0">Reported</span>
+              <i class="bi bi-arrow-right arrow"></i>
+              <span class="status-badge s1">Claimed</span>
+              <i class="bi bi-arrow-right arrow"></i>
+              <span class="status-badge s2">Returned</span>
+            </div>
+            <div class="state-flow-caption">Rejected or cancelled claims go back to Reported</div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="process-timeline">
+
+              <div class="process-item">
+                <div class="process-number">1</div>
+                <div class="process-content">
+                  <h4>Report a Found Item</h4>
+                  <p>Describe what you found and where. The report is stored on-chain with your wallet recorded as the finder.</p>
+                </div>
+              </div>
+
+              <div class="process-item">
+                <div class="process-number process-number-warm">2</div>
+                <div class="process-content">
+                  <h4>Claim With a Deposit</h4>
+                  <p>The owner claims it with a short proof and a small refundable deposit, which discourages false claims.</p>
+                </div>
+              </div>
+
+              <div class="process-item">
+                <div class="process-number">3</div>
+                <div class="process-content">
+                  <h4>The Finder Decides</h4>
+                  <p>Only the finder can approve or reject a claim. A rejected or cancelled claim refunds the deposit in full.</p>
+                </div>
+              </div>
+
+              <div class="process-item">
+                <div class="process-number process-number-warm">4</div>
+                <div class="process-content">
+                  <h4>Handover on Record</h4>
+                  <p>Approval marks the item Returned and refunds the deposit. Each step is a permanent, public event on the chain.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="dashboard section">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Dashboard</h2>
+          <p>Live data from the CampusFind contract. Every action below is a real transaction signed in MetaMask.</p>
+        </div>
+
+        <div id="notice" class="alert cf-notice d-none" role="status" aria-live="polite"></div>
+
+        <!-- Shown until a wallet is connected -->
+        <div id="gate" class="card gate">
+          <div>
+            <span class="gate-icon"><i class="bi bi-wallet2"></i></span>
+            <h3 class="h4 fw-bold mb-2">Connect your wallet to open the dashboard</h3>
+            <p class="mb-4">You will be asked to switch to <strong>Ganache Local</strong> (chain ID 1337) and approve the connection.</p>
+            <a class="btn btn-primary btn-lg px-4 js-connect" href="#dashboard"><i class="bi bi-wallet2 me-2"></i>Connect MetaMask</a>
+          </div>
+        </div>
+
+        <!-- Shown after connecting -->
+        <div id="dash" class="d-none">
+
+          <div class="card wallet-bar mb-4">
+            <span class="pill" id="walletNet"></span>
+            <span class="pill warm" id="walletRole"></span>
+            <span class="addr" id="walletAddr"></span>
+            <span class="ms-auto fw-bold" id="walletBal"></span>
+          </div>
+
+          <div class="dash-stats mb-4">
+            <div class="dash-stat"><span class="label">Items reported</span><strong id="statCount">-</strong></div>
+            <div class="dash-stat"><span class="label">Claim deposit</span><strong id="statDeposit">-</strong></div>
+            <div class="dash-stat"><span class="label">Contract</span><strong id="statContract" class="small-mono"></strong></div>
+            <div class="dash-stat"><span class="label">Admin</span><strong id="statAdmin" class="small-mono"></strong></div>
+          </div>
+
+          <div class="row g-4 mb-4">
+            <div class="col-lg-6">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h2 class="card-title mb-3">Report a found item</h2>
+                  <form id="reportForm" autocomplete="off">
+                    <div class="mb-3">
+                      <label for="desc" class="form-label">What did you find?</label>
+                      <input id="desc" type="text" class="form-control" placeholder="e.g. Black wallet">
+                    </div>
+                    <div class="mb-3">
+                      <label for="loc" class="form-label">Where?</label>
+                      <input id="loc" type="text" class="form-control" placeholder="e.g. Library, 2nd floor">
+                    </div>
+                    <p class="hint-text mb-3">Everything on a blockchain is public, so keep descriptions generic. Never include names or ID numbers.</p>
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-plus-circle me-2"></i>Report item</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h2 class="card-title mb-3">Testing options</h2>
+                  <label for="depositInput" class="form-label">Deposit to send with a claim (ETH)</label>
+                  <div class="d-flex gap-2">
+                    <input id="depositInput" type="text" inputmode="decimal" class="form-control">
+                    <button id="resetDeposit" class="btn btn-outline-secondary flex-none text-nowrap" type="button">Use current</button>
+                  </div>
+                  <label class="check-row">
+                    <input id="forceSend" type="checkbox" class="form-check-input">
+                    <span>Send even if it will fail
+                      <small>Skips the pre-check so a failing transaction is still sent and recorded on-chain.</small>
+                    </span>
+                  </label>
+                  <p class="hint-text">Rules like "finder cannot claim own item" run inside the smart contract. The buttons on each item are visible to everyone, so you can try unauthorized actions and watch them get rejected.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="card-title mb-0">Items</h2>
+                <button id="refreshBtn" class="btn btn-outline-secondary btn-sm" type="button"><i class="bi bi-arrow-clockwise me-1"></i>Refresh</button>
+              </div>
+              <div id="items" class="items-grid"></div>
+            </div>
+          </div>
+
+          <div class="row g-4 mb-4">
+            <div class="col-lg-5">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h2 class="card-title mb-3">Admin: claim deposit</h2>
+                  <form id="depositForm" autocomplete="off">
+                    <label for="newDeposit" class="form-label">New claim deposit (ETH)</label>
+                    <input id="newDeposit" type="text" inputmode="decimal" class="form-control mb-3" placeholder="e.g. 0.002">
+                    <p class="hint-text mb-3">Only the admin account (the contract deployer) can change this.</p>
+                    <button class="btn btn-primary" type="submit">Set deposit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h2 class="card-title mb-3">Transactions this session</h2>
+                  <ul id="txLog" class="log"><li class="text-muted">Nothing sent yet.</li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body p-4">
+              <h2 class="card-title mb-1">On-chain activity</h2>
+              <p class="hint-text mt-0 mb-3">Events emitted by the contract, read straight from the blockchain.</p>
+              <ul id="activity" class="log"></ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>CampusFind &middot; Blockchain Technology (CSE4444) &middot; Assignment 2</span>
+    </div>
+  </footer>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/ethers/ethers.umd.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

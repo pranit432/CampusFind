@@ -1,0 +1,5 @@
+# local tooling / secrets: never commit these
+.claude/
+node_modules/
+.env
+*.log
