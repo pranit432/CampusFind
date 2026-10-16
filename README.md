@@ -157,9 +157,11 @@ Test accounts: **Admin** = account 0, **Finder** = account 1, **Claimant** = acc
 
 ## 7. Screenshots
 
-**Smart contract compilation** (Remix, compiler 0.8.34, EVM version `paris`)
+**Smart contract compilation** (Remix, compiler 0.8.34, green tick, contract `CampusFind`)
 
 ![Compilation](screenshots/01-compile.png)
+
+The compiler settings used for the Ganache deployment (EVM version `paris`) are shown in `screenshots/extra/remix-paris.png`.
 
 **Smart contract deployment** (Ganache log: contract created at `0xe78A…a8Ab`)
 
@@ -181,7 +183,7 @@ Test accounts: **Admin** = account 0, **Finder** = account 1, **Claimant** = acc
 
 ![Blockchain data in the UI](screenshots/06-ui-blockchain-data.png)
 
-Additional evidence is in `screenshots/extra/`: the MetaMask confirmation dialogs for the claim (with the 0.001 ETH amount) and for the failing approval, and the successful and failed Remix VM transactions from test section A.
+Additional evidence is in `screenshots/extra/`: the compiler settings with EVM version `paris` (`remix-paris.png`), the MetaMask confirmation dialogs for the claim with the 0.001 ETH amount (`metamask-claim.png`) and for the failing approval (`metamask-failed.png`), and the successful and failed Remix VM transactions from test section A (`remix-success.png`, `remix-failed.png`).
 
 ## 8. Limitations and security notes
 
