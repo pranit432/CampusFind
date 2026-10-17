@@ -82,25 +82,25 @@ Design notes:
 - [Remix IDE](https://remix.ethereum.org) (browser) to compile and deploy
 - Python 3 (or any static file server) to serve the front end
 
-### Step 1: start a local blockchain
+### Step 1: Start a local blockchain
 
 ```bash
 npx ganache --server.port 7545 --chain.chainId 1337 --wallet.deterministic
 ```
 
-Leave it running. It prints 10 test accounts with 1000 ETH each, and their private keys. `--wallet.deterministic` makes the accounts the same on every start. These keys are **public test keys**: never use them on a real network.
+Leave it running. It prints 10 test accounts with 1000 ETH each, and their private keys. `--wallet.deterministic` makes the accounts the same on every start. These keys are **public test keys**: Never use them on a real network.
 
-### Step 2: compile and deploy with Remix
+### Step 2: Compile and deploy with Remix
 
 1. In Remix, create `contracts/CampusFind.sol` and paste in the contract.
-2. **Solidity Compiler** tab: compiler 0.8.x, open *Advanced Configurations* and set **EVM Version to `paris`** (Ganache's EVM is older than Remix's default, and newer opcodes fail with "invalid opcode"). Click **Compile**.
-3. **Deploy & Run** tab: set **Environment** to *Custom - External Http Provider* (or *Dev - Ganache Provider*) and enter `http://127.0.0.1:7545`.
+2. **Solidity Compiler** tab: Compiler 0.8.x, open *Advanced Configurations* and set **EVM Version to `paris`** (Ganache's EVM is older than Remix's default, and newer opcodes fail with "invalid opcode"). Click **Compile**.
+3. **Deploy & Run** tab: Set **Environment** to *Custom - External Http Provider* (or *Dev - Ganache Provider*) and enter `http://127.0.0.1:7545`.
 4. Select Ganache account 0 (`0x90F8…c9C1`), set the constructor argument `_claimDeposit` to `1000000000000000`, and click **Deploy**.
 5. Copy the deployed contract address. If you deploy first from account 0 on a fresh deterministic Ganache you get `0xe78A…a8Ab`, the address already set in `frontend/app.js`. Otherwise update `CONTRACT_ADDRESS` at the top of `frontend/app.js`.
 
-### Step 3: set up MetaMask
+### Step 3: Set up MetaMask
 
-1. Add a custom network: name `Ganache Local`, RPC URL `http://127.0.0.1:7545`, chain ID `1337`, currency `ETH`.
+1. Add a custom network: Name `Ganache Local`, RPC URL `http://127.0.0.1:7545`, chain ID `1337`, currency `ETH`.
 2. Import Ganache accounts using **Import account → Private Key** (copy the keys from the Ganache terminal; do **not** import the recovery phrase). Import at least four so each role can be tried:
 
 | Ganache account | Role in the tests |
@@ -110,7 +110,7 @@ Leave it running. It prints 10 test accounts with 1000 ETH each, and their priva
 | 2 | Claimant |
 | 3 | Stranger (no special rights) |
 
-### Step 4: run the front end
+### Step 4: Run the front end
 
 ```bash
 python -m http.server 8080 --directory frontend
@@ -120,10 +120,10 @@ Open **http://localhost:8080**, click **Connect MetaMask** and, in MetaMask's co
 
 ### Using the dashboard
 
-- **Report a found item**: description and location, then confirm the transaction in MetaMask.
-- **Claim item**: type a proof on the item card and send the deposit.
-- **Approve / Reject claim**, **Cancel my claim**, **Cancel report**: shown on each item under the role allowed to use them. The buttons are visible to everyone on purpose, so unauthorized attempts can be tested.
-- **Testing options**: edit the deposit amount sent with a claim (to try a wrong amount), and tick **Send even if it will fail** to skip the pre-check so a failing transaction is still sent and recorded on-chain.
+- **Report a found item**: Description and location, then confirm the transaction in MetaMask.
+- **Claim item**: Type a proof on the item card and send the deposit.
+- **Approve / Reject claim**, **Cancel my claim**, **Cancel report**: Shown on each item under the role allowed to use them. The buttons are visible to everyone on purpose, so unauthorized attempts can be tested.
+- **Testing options**: Edit the deposit amount sent with a claim (to try a wrong amount), and tick **Send even if it will fail** to skip the pre-check so a failing transaction is still sent and recorded on-chain.
 - **Admin: claim deposit**, **Transactions this session** and **On-chain activity** (events read from the blockchain).
 
 ## 6. Test cases and results
@@ -146,16 +146,6 @@ Test accounts: **Admin** = account 0, **Finder** = account 1, **Claimant** = acc
 | 10 | Valid | Claimant | `claimItem(2, "Black bottle with a sticker")` with 0.001 ETH | Success, item 2 Claimed, `ItemClaimed` emitted |
 | 11 | Unauthorized | Stranger | `approveClaim(2)` | Reverted: "Only the finder allowed" |
 | 12 | Unauthorized | Stranger | `cancelClaim(2)` | Reverted: "Only the claimant allowed" |
-
-**Remix VM evidence**
-
-Successful transaction (test 3: the finder calls `approveClaim(1)`; status `1`, "Transaction mined and execution completed", and the `ItemReturned` event in the logs):
-
-![Remix VM successful transaction](screenshots/extra/remix-success.png)
-
-Failed transaction (test 4: a non-admin calls `setClaimDeposit(5)`; status `0`, "Transaction mined but execution failed", reason "Only admin allowed"):
-
-![Remix VM failed transaction](screenshots/extra/remix-failed.png)
 
 ### B. End-to-end tests through the web UI on Ganache with MetaMask
 
@@ -193,7 +183,15 @@ The compiler settings used for the Ganache deployment (EVM version `paris`) are 
 
 ![Blockchain data in the UI](screenshots/06-ui-blockchain-data.png)
 
-Additional evidence is in `screenshots/extra/`: the compiler settings with EVM version `paris` (`remix-paris.png`), the MetaMask confirmation dialogs for the claim with the 0.001 ETH amount (`metamask-claim.png`) and for the failing approval (`metamask-failed.png`). The successful and failed Remix VM transactions are shown in section 6A above.
+**Remix VM successful transaction** (test 3 in section 6A, the finder calls `approveClaim(1)`; status `1`, "Transaction mined and execution completed", and the `ItemReturned` event in the logs)
+
+![Remix VM successful transaction](screenshots/extra/remix-success.png)
+
+**Remix VM failed transaction** (test 4 in section 6A, a non-admin calls `setClaimDeposit(5)`; status `0`, "Transaction mined but execution failed", reason "Only admin allowed")
+
+![Remix VM failed transaction](screenshots/extra/remix-failed.png)
+
+Additional evidence is in `screenshots/extra/`: the compiler settings with EVM version `paris` (`remix-paris.png`), and the MetaMask confirmation dialogs for the claim with the 0.001 ETH amount (`metamask-claim.png`) and for the failing approval (`metamask-failed.png`).
 
 ## 8. Limitations and security notes
 
