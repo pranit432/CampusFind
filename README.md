@@ -147,6 +147,16 @@ Test accounts: **Admin** = account 0, **Finder** = account 1, **Claimant** = acc
 | 11 | Unauthorized | Stranger | `approveClaim(2)` | Reverted: "Only the finder allowed" |
 | 12 | Unauthorized | Stranger | `cancelClaim(2)` | Reverted: "Only the claimant allowed" |
 
+**Remix VM evidence**
+
+Successful transaction (test 3: the finder calls `approveClaim(1)`; status `1`, "Transaction mined and execution completed", and the `ItemReturned` event in the logs):
+
+![Remix VM successful transaction](screenshots/extra/remix-success.png)
+
+Failed transaction (test 4: a non-admin calls `setClaimDeposit(5)`; status `0`, "Transaction mined but execution failed", reason "Only admin allowed"):
+
+![Remix VM failed transaction](screenshots/extra/remix-failed.png)
+
 ### B. End-to-end tests through the web UI on Ganache with MetaMask
 
 | # | Category | Actor | Action in the UI | Observed result |
@@ -183,7 +193,7 @@ The compiler settings used for the Ganache deployment (EVM version `paris`) are 
 
 ![Blockchain data in the UI](screenshots/06-ui-blockchain-data.png)
 
-Additional evidence is in `screenshots/extra/`: the compiler settings with EVM version `paris` (`remix-paris.png`), the MetaMask confirmation dialogs for the claim with the 0.001 ETH amount (`metamask-claim.png`) and for the failing approval (`metamask-failed.png`), and the successful and failed Remix VM transactions from test section A (`remix-success.png`, `remix-failed.png`).
+Additional evidence is in `screenshots/extra/`: the compiler settings with EVM version `paris` (`remix-paris.png`), the MetaMask confirmation dialogs for the claim with the 0.001 ETH amount (`metamask-claim.png`) and for the failing approval (`metamask-failed.png`). The successful and failed Remix VM transactions are shown in section 6A above.
 
 ## 8. Limitations and security notes
 
